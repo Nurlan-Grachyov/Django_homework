@@ -1,12 +1,12 @@
 from django.db import models
-from django.db.models import CharField, TextField, ImageField, IntegerField, DateField
+from django.db.models import CharField, TextField, ImageField, IntegerField, DateField, ForeignKey
 
 
 class Product(models.Model):
     name = CharField(max_length=100, verbose_name="наименование")
     description = TextField(verbose_name="описание")
-    image = ImageField(verbose_name="изображение")
-    category = CharField(max_length=100, verbose_name="категория")
+    image = ImageField(verbose_name="изображение", null=True, blank=True)
+    category = ForeignKey('Category', verbose_name="категория", on_delete=models.CASCADE)
     price = IntegerField(verbose_name="цена за покупку")
     created_at = DateField(verbose_name="дата создания")
     updated_at = DateField(verbose_name="дата последнего изменения")
