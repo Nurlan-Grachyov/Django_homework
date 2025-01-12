@@ -13,7 +13,7 @@ class Product(models.Model):
     name = CharField(max_length=100, verbose_name="наименование")
     description = TextField(verbose_name="описание")
     image = ImageField(
-        verbose_name="изображение", null=True, blank=True, upload_to="catalog/images"
+        verbose_name="изображение", null=True, blank=True, upload_to="order/photo"
     )
     category = ForeignKey(
         "Category", verbose_name="категория", on_delete=models.CASCADE

@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from catalog.models import Product
+
 
 def contacts(request):
     if request.method == "POST":
@@ -10,4 +12,16 @@ def contacts(request):
 
 
 def home(request):
-    return render(request, "home.html")
+    orders = Product.objects.all()
+    context = {
+        'orders': orders
+    }
+    return render(request, "home.html", context=context)
+
+
+def order(request, pk):
+    order_db = Product.objects.get(pk=pk)
+    context = {
+        'order': order_db
+    }
+    return render(request, "order.html", context=context)

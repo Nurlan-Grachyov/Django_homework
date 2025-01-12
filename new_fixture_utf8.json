@@ -1,12 +1,12 @@
 [
 {
   "model": "catalog.product",
-  "pk": 39,
+  "pk": 43,
   "fields": {
     "name": "beef",
     "description": "delicious beef",
-    "image": "",
-    "category": 81,
+    "image": "order/photo/govjadina.jpeg",
+    "category": 85,
     "price": 300,
     "created_at": "2025-01-06",
     "updated_at": "2025-01-06"
@@ -14,12 +14,12 @@
 },
 {
   "model": "catalog.product",
-  "pk": 40,
+  "pk": 44,
   "fields": {
     "name": "shovel",
     "description": "iron shovel",
-    "image": "",
-    "category": 82,
+    "image": "order/photo/Lopata-shtykovaya-Garten-Edel-pryamoy-kovsh.jpg",
+    "category": 86,
     "price": 500,
     "created_at": "2025-01-06",
     "updated_at": "2025-01-06"
@@ -27,7 +27,7 @@
 },
 {
   "model": "catalog.category",
-  "pk": 81,
+  "pk": 85,
   "fields": {
     "name": "meat",
     "description": "meat"
@@ -35,7 +35,7 @@
 },
 {
   "model": "catalog.category",
-  "pk": 82,
+  "pk": 86,
   "fields": {
     "name": "instruments",
     "description": "instruments for garden"

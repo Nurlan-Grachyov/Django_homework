@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Order{% endblock %}
+{% block content %}
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src=" {{ order.image.url }}">
+            <div class="card-body">
+              <p class="card-text">The product {{ order.name }} ({{ order.description }}) from a category {{ order.category }} cost {{ order.price }} created at {{ order.created_at }}, updated at {{ order.updated_at }}.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="#" class="btn btn-primary">Купить</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
