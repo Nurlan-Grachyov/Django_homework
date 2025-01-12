@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from catalog.forms import ProductForm
 from catalog.models import Product
 
 
@@ -25,3 +26,15 @@ def order(request, pk):
         'order': order_db
     }
     return render(request, "order.html", context=context)
+
+
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('catalog:home')
+    else:
+        form = ProductForm()
+    context = {'form': form}
+    return render(request, 'new_product.html', context)
