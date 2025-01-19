@@ -19,8 +19,8 @@ class Product(models.Model):
         "Category", verbose_name="категория", on_delete=models.CASCADE
     )
     price = IntegerField(verbose_name="цена за покупку")
-    created_at = DateField(verbose_name="дата создания")
-    updated_at = DateField(verbose_name="дата последнего изменения")
+    created_at = DateField(verbose_name="дата создания", auto_now_add=True)
+    updated_at = DateField(verbose_name="дата последнего изменения", auto_now=True)
 
     class Meta:
         verbose_name = "Продукт"

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'catalog_base.html' %}
 
 {% block title %}Home{% endblock %}
 {% block content %}
@@ -9,8 +9,8 @@
                 <div class="col">
                     <div class="card shadow-sm">
                         {% if order.image %}
-                        <img src=" {{ order.image.url }}">
-                        {% else %}
+                            <img src=" {{ order.image.url }}">
+                        {% endif %}
                         <div class="card-body">
                             <p class="card-text">{{ order.name }}</p>
                             <p class="card-text">{{ order.description|slice:"100" }}</p>
@@ -20,7 +20,6 @@
                                 </div>
                             </div>
                         </div>
-                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}

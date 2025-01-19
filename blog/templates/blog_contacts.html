@@ -1,4 +1,4 @@
-{% extends 'catalog_base.html' %}
+{% extends 'blog_base.html' %}
 
 {% block title %}Contacts{% endblock %}
 {% block content %}
@@ -51,7 +51,7 @@
                             <textarea type="text" name="message" class="form-control" id="message"
                                       placeholder="Введите сообщение" required></textarea>
                         </div>
-                        <a href="{% url 'catalog:home' %}" type="submit" class="btn btn-lg btn-block btn-outline-primary">Отправить</a>
+                        <a href="{% url 'blog:home' %}" type="submit" class="btn btn-lg btn-block btn-outline-primary">Отправить</a>
                     </form>
                 </div>
             </div>

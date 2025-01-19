@@ -1,36 +1,36 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.contrib.messages import success
+from django.urls import reverse_lazy
+from django.views.generic import FormView, ListView, DetailView, CreateView, DeleteView
 
-from catalog.forms import ProductForm
+from catalog.forms import ContactForm
 from catalog.models import Product
 
 
-def contacts(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        return HttpResponse(f"Спасибо, {name}! Ваше сообщение получено.")
-    return render(request, "contacts.html")
+class ContactsFormView(FormView):
+    template_name = 'contacts.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contacts')
 
 
-def home(request):
-    orders = Product.objects.all()
-    context = {"orders": orders}
-    return render(request, "home.html", context=context)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'product_list.html'
+    context_object_name = 'orders'
 
 
-def order(request, pk):
-    order_db = Product.objects.get(pk=pk)
-    context = {"order": order_db}
-    return render(request, "order.html", context=context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_detail.html'
+    context_object_name = 'order'
 
-
-def add_product(request):
-    if request.method == "POST":
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect("catalog:home")
-    else:
-        form = ProductForm()
-    context = {"form": form}
-    return render(request, "add_product.html", context)
+class ProductCreateView(CreateView):
+    model = Product
+    template_name = 'product_create.html'
+    fields = [
+        "name",
+        "category",
+        "description",
+        "price",
+        "image",
+    ]
+    success_url = reverse_lazy("catalog:home")

@@ -1,0 +1,31 @@
+{% extends 'blog_base.html' %}
+{% block title %}Статья{% endblock %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+                    {% if article.image %}
+                    <img src=" {{ article.image.url }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">The product {{ article.name }} ({{ articles.description }}) from a
+                            category {{ articles.category }} cost {{ articles.price }} created at
+                            {{ articles.created_at }}, updated at {{ articles.updated_at }}.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <form action="{% url 'blog:del_article' article.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Удалить</button>
+                                </form>
+                                <a href="#" class="btn btn-primary">Купить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
