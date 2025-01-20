@@ -10,9 +10,7 @@
                         <img src=" {{ order.image.url }}">
                     {% endif %}
                     <div class="card-body">
-                        <p class="card-text">The product {{ object.name }} ({{ object.description }}) from a
-                            category {{ object.category }} cost {{ object.price }} created at
-                            {{ object.created_at }}, updated at {{ object.updated_at }}.</p>
+                        <p class="card-text">{{ order.description }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="#" class="btn btn-primary">Купить</a>

@@ -1,5 +1,12 @@
 from django.db import models
-from django.db.models import CharField, TextField, ImageField, DateField, BooleanField, IntegerField
+from django.db.models import (
+    CharField,
+    TextField,
+    ImageField,
+    DateField,
+    BooleanField,
+    IntegerField,
+)
 
 
 class Blog(models.Model):
