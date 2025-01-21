@@ -5,7 +5,7 @@ from django.db.models import (
     ImageField,
     DateField,
     BooleanField,
-    IntegerField,
+    PositiveIntegerField,
 )
 
 
@@ -17,7 +17,7 @@ class Blog(models.Model):
     )
     created_at = DateField(verbose_name="дата создания", auto_now_add=True)
     is_created = BooleanField(default=True)
-    viewing = IntegerField(null=True, blank=True)
+    viewing = PositiveIntegerField(default=0, editable=False)
 
     class Meta:
         verbose_name = "Статья"

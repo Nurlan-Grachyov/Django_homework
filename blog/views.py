@@ -25,7 +25,7 @@ class BlogListView(ListView):
 class BlogCreateView(CreateView):
     model = Blog
     template_name = "blog_create.html"
-    fields = ["name", "description", "image", "is_created", "viewing"]
+    fields = ["name", "description", "image", "is_created"]
     success_url = reverse_lazy("blog:home")
 
 
@@ -43,13 +43,13 @@ class BlogDetailView(DetailView):
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
         obj.viewing += 1
-        obj.save()
+        obj.save(update_fields=['viewing'])
         return obj
 
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ["name", "description", "image", "is_created", "viewing"]
+    fields = ["name", "description", "image", "is_created"]
     template_name = "blog_create.html"
 
     def get_success_url(self):
